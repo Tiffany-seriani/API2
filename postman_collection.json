@@ -1,0 +1,151 @@
+{
+  "info": {
+    "_postman_id": "8f5a1c10-b99b-4b2a-89a1-7789acbc56d1",
+    "name": "Mongoose Express User API",
+    "description": "Postman Collection for testing Node.js, Express, and Mongoose CRUD operations.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "userId",
+      "value": "66bc112233445566778899aa",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "API Welcome & Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            ""
+          ]
+        },
+        "description": "Root endpoint displaying API status and available routes."
+      },
+      "response": []
+    },
+    {
+      "name": "1. GET - Return All Users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users"
+          ]
+        },
+        "description": "Fetches all user documents from MongoDB using Mongoose `User.find()`."
+      },
+      "response": []
+    },
+    {
+      "name": "2. POST - Add A New User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Alice Johnson\",\n  \"email\": \"alice.johnson@example.com\",\n  \"age\": 25,\n  \"role\": \"user\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users"
+          ]
+        },
+        "description": "Creates a new user in MongoDB using Mongoose `new User().save()`."
+      },
+      "response": []
+    },
+    {
+      "name": "3. GET - Return Single User By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/{{userId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "{{userId}}"
+          ]
+        },
+        "description": "Fetches a single user document by ID using Mongoose `User.findById()`."
+      },
+      "response": []
+    },
+    {
+      "name": "4. PUT - Edit A User By ID",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Alice J. Smith\",\n  \"age\": 26,\n  \"role\": \"admin\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/{{userId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "{{userId}}"
+          ]
+        },
+        "description": "Updates an existing user document by ID using Mongoose `User.findByIdAndUpdate()`."
+      },
+      "response": []
+    },
+    {
+      "name": "5. DELETE - Remove A User By ID",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/{{userId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "{{userId}}"
+          ]
+        },
+        "description": "Removes a user document from MongoDB by ID using Mongoose `User.findByIdAndDelete()`."
+      },
+      "response": []
+    }
+  ]
+}
