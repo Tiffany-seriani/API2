@@ -193,14 +193,4 @@ You can import the included [`postman_collection.json`](file:///C:/Users/Admin/.
     "email": "sarah.connor@example.com"
   }
 }
-```
 
----
-
-## 🛡️ Error Handling
-The API includes robust error handling for:
-- Invalid MongoDB ObjectIds (`CastError` -> `400 Bad Request`)
-- Missing or invalid fields (`ValidationError` -> `400 Bad Request` with field messages)
-- Duplicate emails (`MongoServerError code 11000` -> `400 Bad Request`)
-- Non-existent IDs (`404 Not Found`)
-- Unmatched routes (`404 Route Not Found`)
